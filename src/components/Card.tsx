@@ -7,7 +7,7 @@ import {
   GPLogo,
   AftonbladetLogo,
 } from './Logos';
-import { TNewsPaper } from '../hooks/testdata';
+import { TNewsPaper } from '../types';
 
 const Container = styled.div`
   display: grid;
