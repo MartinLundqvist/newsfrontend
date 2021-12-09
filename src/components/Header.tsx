@@ -9,7 +9,8 @@ const Wrapper = styled.div`
   justify-content: space-between;
   align-items: baseline;
   box-shadow: 0px 0px 5px 5px hsla(0, 0%, 0%, 0.25);
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Bebas Neue', cursive;
+  background-color: var(--color-card);
 
   h2,
   h3 {
@@ -25,17 +26,20 @@ const Wrapper = styled.div`
     color: darkblue;
   }
 
-  @media (max-width: 500px) {
+  @media (max-width: 550px) {
     padding: 0.25rem 1rem;
+    flex-direction: column;
     h3 {
       font-size: 1rem;
+      margin-block-start: 0.25rem;
+      margin-block-end: 0.25rem;
     }
   }
 `;
 
 export const Header = (): JSX.Element => {
   const { isLoading, isError, newsAPI } = useNews();
-  const [latestDate, setLatestDate] = useState<string>('Loading');
+  const [latestDate, setLatestDate] = useState<string>('Laddar...');
 
   useEffect(() => {
     if (newsAPI) {
@@ -45,7 +49,8 @@ export const Header = (): JSX.Element => {
 
   return (
     <Wrapper>
-      <h2>NewsScraper</h2>
+      <h3>NewsScraper</h3>
+      <h3>Toppnyheterna varannan minut</h3>
       <h3>
         Updaterad: <span>{latestDate}</span>
       </h3>

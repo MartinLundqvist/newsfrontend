@@ -17,15 +17,17 @@ const Container = styled.div`
   align-items: stretch;
   justify-content: flex-start;
   grid-template-columns: 1fr;
-  grid-template-rows: 5vh 1fr;
+  grid-template-rows: 4vh 1fr;
   padding: 1rem;
   border-radius: 0.1rem;
   box-shadow: 3px 3px 5px 3px hsla(0, 0%, 0%, 0.25);
+  background-color: var(--color-card);
 
   ul {
     width: 100%;
     list-style: none;
     padding-inline-start: 0;
+    font-family: 'Bebas Neue', cursive;
     font-size: 1.2rem;
     margin-block-end: 0;
 
@@ -105,7 +107,7 @@ interface ICardProps {
   newspaper: TNewsPaper;
 }
 
-const Card = ({ newspaper, children }: ICardProps): JSX.Element => {
+export const Card = ({ newspaper, children }: ICardProps): JSX.Element => {
   return (
     <Container>
       {
@@ -116,5 +118,3 @@ const Card = ({ newspaper, children }: ICardProps): JSX.Element => {
     </Container>
   );
 };
-
-export default Card;
