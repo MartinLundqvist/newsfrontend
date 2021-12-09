@@ -52,7 +52,7 @@ export const Header = (): JSX.Element => {
       <h3>NewsScraper</h3>
       <h3>Toppnyheterna varannan minut</h3>
       <h3>
-        Updaterad: <span>{latestDate}</span>
+        Uppdaterad: <span>{latestDate}</span>
       </h3>
     </Wrapper>
   );
