@@ -89,8 +89,11 @@ const Styled = styled.div`
 
   .main-text {
     position: absolute;
-    left: -100px;
-    top: -35px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    /* left: -100px;
+    top: -35px; */
     font-size: 50px;
     font-weight: 700;
     color: var(--color-text);
