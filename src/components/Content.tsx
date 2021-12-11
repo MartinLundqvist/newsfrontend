@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { Card } from './Card';
 import { Loader } from './Loader';
@@ -18,8 +18,13 @@ const Wrapper = styled.div`
 `;
 export const Content = (): JSX.Element => {
   const { isError, isLoading, newsAPI } = useNews();
+  const [showLoader, setShowLoader] = useState(true);
 
-  if (isLoading) {
+  useEffect(() => {
+    setTimeout(() => setShowLoader(false), 2500);
+  }, []);
+
+  if (isLoading || showLoader) {
     return <Loader />;
   }
 

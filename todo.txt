@@ -1,2 +1,8 @@
-TODO: Create a global data context which loads the last 24 hours into a global data class object
-TODO: Move all types into a shared directory
+Backlog:
+- Move the scraper to a cloud provider
+
+Ideas: 
+- Additional papers: Economist, Wall Street Journal, Washtingon Post, The Guardian
+- Search on key words
+- Filter which newspapers you're interested in 
+
