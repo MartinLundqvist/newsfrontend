@@ -18,8 +18,11 @@ class NewsAPI {
   };
 
   public filteredNews = (filter: INewsFilter): IHeadlines[] => {
-    const results = filterNews(this.latestNews(), filter);
-    return results;
+    if (filter.timerange === 2) {
+      return filterNews(this.latestNews(), filter);
+    }
+
+    return flattenNews(filterNews(this.news, filter));
   };
 
   public latestUpdate = (): Date => {
@@ -37,6 +40,45 @@ class NewsAPI {
     return [...results];
   };
 }
+
+const flattenNews = (news: IHeadlines[]): IHeadlines[] => {
+  var results: IHeadlines[] = [];
+
+  //for each headline
+
+  news.forEach((newsHeadline) => {
+    results;
+    //Do we already have an object in the results array for this newspaper?
+    if (
+      results.findIndex(
+        (result) => result.newspaper === newsHeadline.newspaper
+      ) === -1
+    ) {
+      //If not, add it to the results array
+      results.push(newsHeadline);
+    }
+
+    //Then, for each headline.headline
+    newsHeadline.headlines.forEach((newsHeadlineItem) => {
+      // Fetch the right object in our results array
+      const resultsheadline = results.find(
+        (item) => item.newspaper === newsHeadline.newspaper
+      ); // This should exist now
+
+      //Do we already have an object for this headline in the array?
+      if (
+        resultsheadline?.headlines.findIndex(
+          (row) => row.headline === newsHeadlineItem.headline
+        ) === -1
+      ) {
+        //If not, add it to the results array
+        resultsheadline.headlines.push(newsHeadlineItem);
+      }
+    });
+  });
+
+  return results;
+};
 
 const sortNews = (news: IHeadlines[]): IHeadlines[] => {
   const results = [...news].sort((a, b) => {
@@ -56,13 +98,12 @@ const sortNews = (news: IHeadlines[]): IHeadlines[] => {
  */
 
 const filterNews = (news: IHeadlines[], filter: INewsFilter): IHeadlines[] => {
-  //Filter out the newspapers
+  //Filter out the newspapers of interest
   var results = [...news].filter((item) =>
     filter.newspapers?.includes(item.newspaper)
   );
 
   // If there are keywords present in the filter, filter the headlines
-
   if (filter.keywords.length > 0) {
     var temp: IHeadlines[] = [];
 

@@ -289,8 +289,8 @@ export const Menu = ({ open }: IMenuProps): JSX.Element => {
         </KeywordWrapper>
       </div>
       <div>
-        <h3>Spara?</h3>
-        <Button onClick={() => setFilter(localFilter)}>Spara</Button>
+        <h3>Tillämpa?</h3>
+        <Button onClick={() => setFilter(localFilter)}>Tillämpa</Button>
         <Button alert onClick={() => setLocalFilter(filter)}>
           Ångra
         </Button>

@@ -1,8 +1,4 @@
-Backlog:
-- Move the scraper to a cloud provider
-
 Ideas: 
 - Additional papers: Economist, Wall Street Journal, Washtingon Post, The Guardian
 - Search on key words
-- Filter which newspapers you're interested in 
 
