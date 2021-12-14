@@ -11,6 +11,7 @@ interface IFilterProvider {
 const initialFilter: INewsFilter = {
   newspapers: ['Aftonbladet', 'DN', 'Expressen', 'GP', 'SVD', 'Sydsvenskan'],
   keywords: [],
+  timerange: 2,
 };
 
 const FilterContext = createContext<IFilterProvider>({} as IFilterProvider);
@@ -26,7 +27,6 @@ const FilterProvider = ({ children }: IFilterProviderProps): JSX.Element => {
     'newsscraper_filter',
     initialFilter
   );
-  const [test, setTest] = useState<INewsFilter>(initialFilter);
 
   return (
     <FilterContext.Provider

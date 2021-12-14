@@ -24,13 +24,22 @@ const Wrapper = styled.div`
     color: darkblue;
   }
 
-  @media (max-width: 550px) {
+  @media (max-width: 600px) {
     padding: 0.25rem 1rem;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: auto auto;
     h3 {
+      grid-column: 1 / 2;
+      justify-self: start;
       font-size: 1rem;
       margin-block-start: 0.25rem;
       margin-block-end: 0.25rem;
+    }
+
+    div {
+      grid-column: 2 / 3;
+      grid-row: 1 / 2;
+      justify-self: end;
     }
   }
 `;

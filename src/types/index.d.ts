@@ -15,7 +15,10 @@ export interface IHeadlines {
   }[];
 }
 
+export type TTimeRange = 2 | 60;
+
 export interface INewsFilter {
   newspapers: TNewsPaper[];
   keywords: string[];
+  timerange: TTimeRange;
 }

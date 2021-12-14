@@ -3,14 +3,14 @@ import styled from 'styled-components';
 import { Button } from './Button';
 import { useNews } from '../contexts/NewsProvider';
 import { useFilter } from '../contexts/FilterProvider';
-import { INewsFilter, TNewsPaper } from '../types';
+import { INewsFilter, TNewsPaper, TTimeRange } from '../types';
 
 const Wrapper = styled.div`
   position: relative;
   display: flex;
   padding: 0.5rem 2rem;
   justify-content: flex-start;
-  align-items: baseline;
+  align-items: stretch;
   gap: 1rem;
   box-shadow: 0px 7px 5px 1px hsla(0, 0%, 0%, 0.25);
   font-family: 'Bebas Neue', cursive;
@@ -61,12 +61,73 @@ const Wrapper = styled.div`
     }
   }
 
+  input[type='checkbox'] {
+    position: relative;
+    appearance: none;
+    background-color: var(--color-card);
+    margin: 0 0.25em 0 0;
+    color: currentColor;
+    width: 1em;
+    height: 1em;
+    border: 1px solid currentColor;
+    border-radius: 0.15em;
+
+    &::before {
+      position: absolute;
+      content: '';
+      width: 100%;
+      height: 100%;
+      background-color: black;
+      transform: scale(0);
+      transition: transform 0.1s ease-in-out;
+    }
+
+    &:checked::before {
+      transform: scale(1);
+    }
+  }
+
+  input[type='radio'] {
+    position: relative;
+    appearance: none;
+    background-color: var(--color-card);
+    margin: 0 0.25em 0 0;
+    color: currentColor;
+    width: 1em;
+    height: 1em;
+    border: 1px solid currentColor;
+    border-radius: 0.15em;
+
+    &::before {
+      position: absolute;
+      content: '';
+      width: 100%;
+      height: 100%;
+      background-color: black;
+      transform: scale(0);
+      transition: transform 0.1s ease-in-out;
+    }
+
+    &:checked::before {
+      transform: scale(1);
+    }
+  }
+
   &.closed {
     opacity: 0;
     max-height: 0;
     padding: 0;
-    /* transition: max-height 0.2s ease-in; */
     transition: max-height 0.2s cubic-bezier(0, 1, 0, 1);
+  }
+
+  @media (max-width: 600px) {
+    padding: 0.25rem 1rem;
+    flex-direction: column;
+    h3 {
+      font-size: 1rem;
+      margin-block-start: 0.25rem;
+      margin-block-end: 0.25rem;
+    }
   }
 `;
 
@@ -77,7 +138,6 @@ const KeywordWrapper = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
   gap: 1rem;
-  /* max-width: 30vw; */
 
   div {
     background-color: var(--color-bg);
@@ -107,7 +167,6 @@ export const Menu = ({ open }: IMenuProps): JSX.Element => {
   const [keyword, setKeyword] = useState('');
 
   useEffect(() => {
-    // console.log(filter);
     setLocalFilter(filter);
   }, [filter]);
 
@@ -151,6 +210,14 @@ export const Menu = ({ open }: IMenuProps): JSX.Element => {
     localFilter && setLocalFilter({ ...localFilter, keywords });
   };
 
+  const handleTimeRangeChange = (value: string) => {
+    localFilter &&
+      setLocalFilter({
+        ...localFilter,
+        timerange: parseInt(value, 10) as TTimeRange,
+      });
+  };
+
   if (isError || isLoading || !localFilter) {
     return <></>;
   }
@@ -176,11 +243,28 @@ export const Menu = ({ open }: IMenuProps): JSX.Element => {
       </div>
       <div>
         <h3>Tidshorisont</h3>
-        Nu
-        <br />
-        1 timma
-        <br />
-        24 timmar
+        <label>
+          <input
+            type='radio'
+            name='timerange'
+            id='2'
+            value='2'
+            checked={localFilter?.timerange === 2}
+            onChange={(event) => handleTimeRangeChange(event.target.value)}
+          />
+          2 min
+        </label>
+        <label>
+          <input
+            type='radio'
+            name='timerange'
+            id='60'
+            value='60'
+            checked={localFilter?.timerange === 60}
+            onChange={(event) => handleTimeRangeChange(event.target.value)}
+          />
+          60 min
+        </label>
       </div>
       <div>
         <h3>Sökord</h3>
