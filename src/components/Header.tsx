@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import { Menu } from './Menu';
+import { Button } from './Button';
 import { useNews } from '../contexts/NewsProvider';
 
 const Wrapper = styled.div`
@@ -12,13 +14,9 @@ const Wrapper = styled.div`
   font-family: 'Bebas Neue', cursive;
   background-color: var(--color-card);
 
-  h2,
   h3 {
     margin-block-start: 0.5rem;
     margin-block-end: 0.5rem;
-  }
-
-  h3 {
     text-align: right;
   }
 
@@ -37,9 +35,23 @@ const Wrapper = styled.div`
   }
 `;
 
+interface IMenuButtonProps {
+  open: boolean;
+  setOpen: (open: boolean) => void;
+}
+
+const MenuButton = ({ open, setOpen }: IMenuButtonProps): JSX.Element => {
+  return (
+    <Button onClick={() => setOpen(!open)}>
+      {open ? 'Göm filter' : 'Visa filter'}
+    </Button>
+  );
+};
+
 export const Header = (): JSX.Element => {
   const { isLoading, isError, newsAPI } = useNews();
   const [latestDate, setLatestDate] = useState<string>('Laddar...');
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     if (newsAPI) {
@@ -48,12 +60,15 @@ export const Header = (): JSX.Element => {
   }, [newsAPI]);
 
   return (
-    <Wrapper>
-      <h3>NewsScraper</h3>
-      <h3>Toppnyheterna varannan minut</h3>
-      <h3>
-        Uppdaterad: <span>{latestDate}</span>
-      </h3>
-    </Wrapper>
+    <>
+      <Wrapper>
+        <h3>Toppnyheterna varannan minut</h3>
+        <h3>
+          Uppdaterad: <span>{latestDate}</span>
+        </h3>
+        <MenuButton open={open} setOpen={setOpen} />
+      </Wrapper>
+      <Menu open={open} />
+    </>
   );
 };

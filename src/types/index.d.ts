@@ -14,3 +14,8 @@ export interface IHeadlines {
     url: string;
   }[];
 }
+
+export interface INewsFilter {
+  newspapers: TNewsPaper[];
+  keywords: string[];
+}
