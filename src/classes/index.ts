@@ -8,11 +8,18 @@ class NewsAPI {
   }
 
   public latestNews = (): IHeadlines[] => {
-    const latestDate = this.news[this.news.length - 1].date;
+    var results: IHeadlines[] = [];
 
-    const results = sortNews(
-      [...this.news].filter((item) => item.date === latestDate)
-    );
+    //For each newspaper
+    this.newspapers().forEach((paper) => {
+      // Create a temp array of all such headlines
+      const temp = this.news.filter((thisNewsitem) => {
+        return thisNewsitem.newspaper === paper;
+      });
+
+      //And add that array to the final results
+      results.push(temp[temp.length - 1]);
+    });
 
     return results;
   };
