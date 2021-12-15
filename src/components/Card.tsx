@@ -6,6 +6,8 @@ import {
   SVDLogo,
   GPLogo,
   AftonbladetLogo,
+  WSJLogo,
+  GuardianLogo,
 } from './Logos';
 import { TNewsPaper } from '../types';
 
@@ -99,6 +101,14 @@ const newsPaperLogos: TNewsPaperLogo[] = [
   {
     newspaper: 'Expressen',
     newspaperlogo: <ExpressenLogo />,
+  },
+  {
+    newspaper: 'WSJ',
+    newspaperlogo: <WSJLogo />,
+  },
+  {
+    newspaper: 'Guardian',
+    newspaperlogo: <GuardianLogo />,
   },
 ];
 

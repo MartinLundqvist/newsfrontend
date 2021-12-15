@@ -4,7 +4,9 @@ export type TNewsPaper =
   | 'Sydsvenskan'
   | 'GP'
   | 'DN'
-  | 'Expressen';
+  | 'Expressen'
+  | 'WSJ'
+  | 'Guardian';
 
 export interface IHeadlines {
   newspaper: TNewsPaper;
