@@ -1,4 +1,5 @@
 Ideas: 
-- Additional papers: Economist, Wall Street Journal, Washtingon Post, The Guardian
-- Search on key words
-
+- Show as cloud (with links) DONE. But not with links...
+- Change options to "english", "swedish", "swiss", etc. NOPE. 
+- Add "12 hours" as an option - DONE
+- Fix the hover state on the news card - it's ugly. DONE.

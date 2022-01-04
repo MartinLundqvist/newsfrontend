@@ -17,10 +17,13 @@ export interface IHeadlines {
   }[];
 }
 
-export type TTimeRange = 2 | 60;
+export type TTimeRange = 2 | 120 | 720;
+
+export type TVisualize = 'newspaper' | 'cloud';
 
 export interface INewsFilter {
   newspapers: TNewsPaper[];
   keywords: string[];
   timerange: TTimeRange;
+  visualize: TVisualize;
 }

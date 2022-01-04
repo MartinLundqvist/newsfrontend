@@ -21,7 +21,7 @@ const Wrapper = styled.div`
   }
 
   span {
-    color: darkblue;
+    color: var(--color-link);
   }
 
   @media (max-width: 600px) {

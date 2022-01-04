@@ -9,9 +9,19 @@ interface IFilterProvider {
 
 // TODO: Replace this with a programmatic setting to all newspapers
 const initialFilter: INewsFilter = {
-  newspapers: ['Aftonbladet', 'DN', 'Expressen', 'GP', 'SVD', 'Sydsvenskan'],
+  newspapers: [
+    'Aftonbladet',
+    'DN',
+    'Expressen',
+    'GP',
+    'SVD',
+    'Sydsvenskan',
+    'Guardian',
+    'WSJ',
+  ],
   keywords: [],
   timerange: 2,
+  visualize: 'newspaper',
 };
 
 const FilterContext = createContext<IFilterProvider>({} as IFilterProvider);

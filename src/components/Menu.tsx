@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Button } from './Button';
 import { useNews } from '../contexts/NewsProvider';
 import { useFilter } from '../contexts/FilterProvider';
-import { INewsFilter, TNewsPaper, TTimeRange } from '../types';
+import { INewsFilter, TNewsPaper, TTimeRange, TVisualize } from '../types';
 
 const Wrapper = styled.div`
   position: relative;
@@ -39,6 +39,10 @@ const Wrapper = styled.div`
       width: 100%;
       height: 1px;
       background-color: black;
+    }
+
+    span {
+      font-size: 0.75em;
     }
   }
 
@@ -217,6 +221,13 @@ export const Menu = ({ open }: IMenuProps): JSX.Element => {
         timerange: parseInt(value, 10) as TTimeRange,
       });
   };
+  const handleVisualizeChange = (value: string) => {
+    localFilter &&
+      setLocalFilter({
+        ...localFilter,
+        visualize: value as TVisualize,
+      });
+  };
 
   if (isError || isLoading || !localFilter) {
     return <></>;
@@ -252,18 +263,29 @@ export const Menu = ({ open }: IMenuProps): JSX.Element => {
             checked={localFilter?.timerange === 2}
             onChange={(event) => handleTimeRangeChange(event.target.value)}
           />
-          2 min
+          Senaste
         </label>
         <label>
           <input
             type='radio'
             name='timerange'
-            id='60'
-            value='60'
-            checked={localFilter?.timerange === 60}
+            id='120'
+            value='120'
+            checked={localFilter?.timerange === 120}
             onChange={(event) => handleTimeRangeChange(event.target.value)}
           />
-          60 min
+          2 tim
+        </label>
+        <label>
+          <input
+            type='radio'
+            name='timerange'
+            id='720'
+            value='720'
+            checked={localFilter?.timerange === 720}
+            onChange={(event) => handleTimeRangeChange(event.target.value)}
+          />
+          12 tim
         </label>
       </div>
       <div>
@@ -287,6 +309,29 @@ export const Menu = ({ open }: IMenuProps): JSX.Element => {
             </div>
           ))}
         </KeywordWrapper>
+      </div>
+      <div>
+        <h3>Visning</h3>
+        <label>
+          <input
+            type='radio'
+            name='visualize'
+            value='newspaper'
+            checked={localFilter?.visualize === 'newspaper'}
+            onChange={(event) => handleVisualizeChange(event.target.value)}
+          />
+          Tidningar
+        </label>
+        <label>
+          <input
+            type='radio'
+            name='visualize'
+            value='cloud'
+            checked={localFilter?.visualize === 'cloud'}
+            onChange={(event) => handleVisualizeChange(event.target.value)}
+          />
+          Ordmoln (engelska)
+        </label>
       </div>
       <div>
         <h3>Tillämpa?</h3>

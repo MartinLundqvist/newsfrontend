@@ -25,11 +25,15 @@ class NewsAPI {
   };
 
   public filteredNews = (filter: INewsFilter): IHeadlines[] => {
+    // If "latest news" is chosen, we use the latestNews function to gather the latest entries. So it's not really "2 minutes".
     if (filter.timerange === 2) {
       return filterNews(this.latestNews(), filter);
     }
 
-    return flattenNews(filterNews(this.news, filter));
+    // If not, we timestrip the news
+    const results = timeStripNews(this.news, filter);
+
+    return flattenNews(filterNews(results, filter));
   };
 
   public latestUpdate = (): Date => {
@@ -87,15 +91,15 @@ const flattenNews = (news: IHeadlines[]): IHeadlines[] => {
   return results;
 };
 
-const sortNews = (news: IHeadlines[]): IHeadlines[] => {
-  const results = [...news].sort((a, b) => {
-    if (a.newspaper < b.newspaper) return -1;
-    if (a.newspaper > b.newspaper) return 1;
-    return 0;
-  });
+// const sortNews = (news: IHeadlines[]): IHeadlines[] => {
+//   const results = [...news].sort((a, b) => {
+//     if (a.newspaper < b.newspaper) return -1;
+//     if (a.newspaper > b.newspaper) return 1;
+//     return 0;
+//   });
 
-  return results;
-};
+//   return results;
+// };
 
 /**
  * This Function has a few problems:
@@ -130,6 +134,24 @@ const filterNews = (news: IHeadlines[], filter: INewsFilter): IHeadlines[] => {
 
     return temp;
   }
+
+  return results;
+};
+
+const timeStripNews = (
+  news: IHeadlines[],
+  filter: INewsFilter
+): IHeadlines[] => {
+  //Filter out the headlines according to the time horizon set
+  const newerThanDate = new Date();
+  newerThanDate.setMinutes(newerThanDate.getMinutes() - filter.timerange);
+
+  console.log(newerThanDate);
+
+  var results = [...news].filter((headline) => {
+    const headlineDate = new Date(headline.date);
+    return headlineDate.getTime() >= newerThanDate.getTime();
+  });
 
   return results;
 };

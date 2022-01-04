@@ -8,10 +8,11 @@
   --color-bg: hsl(0, 4%, 85%);
   --color-card: white;
   --color-text: black;
+  --color-link: darkblue;
 }
 
 #root {
-  height: 100vh;
+  height: 100%;
 }
 
 body {

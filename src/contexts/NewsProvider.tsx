@@ -21,7 +21,7 @@ const NewsProvider = ({ children }: INewsProviderProps): JSX.Element => {
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
 
-  // Load up the last 30 mins of data. This takes appx 1.8-2.0 seconds. So animation will finish first (typically).
+  // Load up the last 720 mins of data. This takes a couple of seconds. So animation will finish first (typically).
   useEffect(() => {
     const fetchNews = async () => {
       try {
@@ -29,7 +29,7 @@ const NewsProvider = ({ children }: INewsProviderProps): JSX.Element => {
         setIsLoading(true);
         const toDate = new Date();
         var fromDate = new Date(toDate);
-        fromDate.setMinutes(fromDate.getMinutes() - 60);
+        fromDate.setMinutes(fromDate.getMinutes() - 720);
 
         const apiURL = import.meta.env.VITE_API_URL;
 
