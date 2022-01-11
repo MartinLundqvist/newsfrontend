@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useState } from 'react';
 import { INewsFilter } from '../types';
 import { useLocalStorage } from '../utils/useLocalStorage';
+import { validate } from '../utils/validateFilter';
 
 interface IFilterProvider {
   filter: INewsFilter;
@@ -37,6 +38,10 @@ const FilterProvider = ({ children }: IFilterProviderProps): JSX.Element => {
     'newsscraper_filter',
     initialFilter
   );
+
+  useEffect(() => {
+    !validate(filter) && setFilter(initialFilter);
+  }, [filter]);
 
   return (
     <FilterContext.Provider

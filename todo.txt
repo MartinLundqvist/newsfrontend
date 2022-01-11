@@ -1,5 +1,7 @@
 Ideas: 
 - Show as cloud (with links) DONE. But not with links...
 - Change options to "english", "swedish", "swiss", etc. NOPE. 
-- Add "12 hours" as an option - DONE
-- Fix the hover state on the news card - it's ugly. DONE.
+- Fix localStorage issue when the filter has changed as part of an upgrade. DONE.
+- Add a "show max headlines" option
+- Refactor the Cloud / Content components so they re-use the existing news if they have been loaded. 
+  Actaully, this would probably be a refactor of the NewsProvider interface....

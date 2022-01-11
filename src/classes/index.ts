@@ -146,7 +146,7 @@ const timeStripNews = (
   const newerThanDate = new Date();
   newerThanDate.setMinutes(newerThanDate.getMinutes() - filter.timerange);
 
-  console.log(newerThanDate);
+  // console.log(newerThanDate);
 
   var results = [...news].filter((headline) => {
     const headlineDate = new Date(headline.date);
