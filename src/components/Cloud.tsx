@@ -5,7 +5,6 @@ import { useEffect, useState } from 'react';
 import stopwords from '../utils/stopwords';
 import { useNews } from '../contexts/NewsProvider';
 import { useFilter } from '../contexts/FilterProvider';
-import { Loader } from './Loader';
 
 const Wrapper = styled.div`
   display: block;
@@ -26,13 +25,8 @@ const fontScaling = {
 export const Cloud = (): JSX.Element => {
   const { isError, isLoading, newsAPI } = useNews();
   const { filter } = useFilter();
-  const [showLoader, setShowLoader] = useState(true);
   const [news, setNews] = useState<IHeadlines[]>([]);
   const [words, setWords] = useState<IWords[]>([]);
-
-  useEffect(() => {
-    setTimeout(() => setShowLoader(false), 2500);
-  }, []);
 
   useEffect(() => {
     newsAPI && filter && setNews(newsAPI.filteredNews(filter));
@@ -107,12 +101,8 @@ export const Cloud = (): JSX.Element => {
     news.length > 0 && parse();
   }, [news]);
 
-  if (isLoading || showLoader) {
-    return <Loader />;
-  }
-
   if (isError || !newsAPI) {
-    return <p>Error...</p>;
+    return <></>;
   }
 
   return (

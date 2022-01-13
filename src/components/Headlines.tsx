@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { Loader } from './Loader';
+import { Card } from './Card';
 import { useNews } from '../contexts/NewsProvider';
 import { useFilter } from '../contexts/FilterProvider';
 import { IHeadlines } from '../types';
-import { Headlines } from './Headlines';
-import { Cloud } from './Cloud';
 
 const Wrapper = styled.div`
   position: relative;
@@ -20,27 +18,34 @@ const Wrapper = styled.div`
   }
 `;
 
-export const Content = (): JSX.Element => {
+export const Headlines = (): JSX.Element => {
   const { isError, isLoading, newsAPI } = useNews();
   const { filter } = useFilter();
-  const [showLoader, setShowLoader] = useState(true);
+  const [news, setNews] = useState<IHeadlines[]>([]);
 
   useEffect(() => {
-    setTimeout(() => setShowLoader(false), 2500);
-  }, []);
-
-  if (isLoading || showLoader) {
-    return <Loader />;
-  }
+    newsAPI && filter && setNews(newsAPI.filteredNews(filter));
+  }, [newsAPI, filter]);
 
   if (isError || !newsAPI) {
     return <></>;
   }
 
   return (
-    <>
-      {filter.visualize === 'newspaper' && <Headlines />}
-      {filter.visualize === 'cloud' && <Cloud />}
-    </>
+    <Wrapper>
+      {news.map((entry) => (
+        <Card key={entry.newspaper} newspaper={entry.newspaper}>
+          <ul>
+            {entry.headlines.map((headline) => (
+              <li key={headline.headline}>
+                <a href={headline.url} target='_blank'>
+                  {headline.headline}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </Card>
+      ))}
+    </Wrapper>
   );
 };
