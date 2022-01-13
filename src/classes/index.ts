@@ -7,6 +7,16 @@ class NewsAPI {
     this.news = news;
   }
 
+  public count = () => {
+    var count = 0;
+
+    this.news.forEach((item) => {
+      count += item.headlines.length;
+    });
+
+    return count;
+  };
+
   public latestNews = (): IHeadlines[] => {
     var results: IHeadlines[] = [];
 

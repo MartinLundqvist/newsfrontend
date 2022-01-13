@@ -5,6 +5,7 @@ import { Loader } from './Loader';
 import { useNews } from '../contexts/NewsProvider';
 import { useFilter } from '../contexts/FilterProvider';
 import { IHeadlines } from '../types';
+// import Alerts from './Alerts';
 
 const Wrapper = styled.div`
   position: relative;
@@ -38,7 +39,7 @@ export const Content = (): JSX.Element => {
   }
 
   if (isError || !newsAPI) {
-    return <p>Error...</p>;
+    return <></>;
   }
 
   return (

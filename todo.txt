@@ -5,3 +5,7 @@ Ideas:
 - Add a "show max headlines" option
 - Refactor the Cloud / Content components so they re-use the existing news if they have been loaded. 
   Actaully, this would probably be a refactor of the NewsProvider interface....
+- Add a status sticky at the bottom of the screen
+  - Fetched XXX headlines
+  - Issues detected with headlines from Sydsvenskan
+  - 

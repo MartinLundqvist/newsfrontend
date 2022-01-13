@@ -2,6 +2,8 @@ import { createContext, useContext, useEffect, useState } from 'react';
 import { INewsFilter } from '../types';
 import { useLocalStorage } from '../utils/useLocalStorage';
 import { validate } from '../utils/validateFilter';
+import { useToasts } from './ToastProvider';
+// import { useAlert } from './AlertProvider';
 
 interface IFilterProvider {
   filter: INewsFilter;
@@ -38,16 +40,22 @@ const FilterProvider = ({ children }: IFilterProviderProps): JSX.Element => {
     'newsscraper_filter',
     initialFilter
   );
+  const { createToast } = useToasts();
 
   useEffect(() => {
     !validate(filter) && setFilter(initialFilter);
   }, [filter]);
 
+  const updateFilter = (newFilter: INewsFilter) => {
+    setFilter(newFilter);
+    createToast('Filter updaterat!');
+  };
+
   return (
     <FilterContext.Provider
       value={{
         filter,
-        setFilter,
+        setFilter: updateFilter,
       }}
     >
       {children}

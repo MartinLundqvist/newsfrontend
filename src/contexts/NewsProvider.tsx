@@ -1,6 +1,8 @@
 import { createContext, useContext, useEffect, useState } from 'react';
 import { NewsAPI } from '../classes';
 import { IHeadlines } from '../types';
+import { useToasts } from './ToastProvider';
+// import { useAlert } from './AlertProvider';
 
 interface INewsProvider {
   newsAPI: NewsAPI | null;
@@ -20,6 +22,7 @@ const NewsProvider = ({ children }: INewsProviderProps): JSX.Element => {
   const [newsAPI, setNewsAPI] = useState<NewsAPI | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
+  const { createToast } = useToasts();
 
   // Load up the last 720 mins of data. This takes a couple of seconds. So animation will finish first (typically).
   useEffect(() => {
@@ -39,14 +42,29 @@ const NewsProvider = ({ children }: INewsProviderProps): JSX.Element => {
         if (results.ok) {
           const rawData: IHeadlines[] = await results.json();
 
-          setNewsAPI(new NewsAPI(rawData));
+          const newNewsAPI = new NewsAPI(rawData);
+
+          setNewsAPI(newNewsAPI);
+          createToast(
+            `Hämtade ${newNewsAPI.count().toLocaleString()} rubriker`
+          );
         } else {
           setIsError(true);
           setNewsAPI(null);
-          console.log('Error occured ' + JSON.stringify(results));
+          createToast(
+            'Fel uppstod när data skulle hämtas: ' +
+              JSON.stringify(results.statusText),
+            'error'
+          );
+          // console.log('Error occured ' + JSON.stringify(results));
         }
       } catch (error) {
-        console.error(JSON.stringify(error));
+        createToast(
+          'Fel uppstod när data skulle hämtas ' + JSON.stringify(error),
+          'error'
+        );
+
+        // console.error(JSON.stringify(error));
       } finally {
         setIsLoading(false);
       }
