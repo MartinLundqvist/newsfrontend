@@ -8,3 +8,5 @@ Ideas:
   - Fetched XXX headlines
   - Issues detected with headlines from Sydsvenskan
   - 
+
+- Refactor the whole thing to use luxon DateTime throughout

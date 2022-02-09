@@ -7,9 +7,18 @@ const schema: JSONSchemaType<INewsFilter> = {
     newspapers: { type: 'array', uniqueItems: true, items: { type: 'string' } },
     keywords: { type: 'array', uniqueItems: true, items: { type: 'string' } },
     timerange: { type: 'integer', enum: [2, 120, 720] },
-    visualize: { type: 'string', enum: ['newspaper', 'cloud'] },
+    visualize: { type: 'string', enum: ['newspaper', 'cloud', 'sentiment'] },
+    marketSymbol: { type: 'string' },
+    hideWeekends: { type: 'boolean' },
   },
-  required: ['newspapers', 'keywords', 'timerange', 'visualize'],
+  required: [
+    'newspapers',
+    'keywords',
+    'timerange',
+    'visualize',
+    'marketSymbol',
+    'hideWeekends',
+  ],
 };
 
 const ajv = new Ajv();

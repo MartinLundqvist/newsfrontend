@@ -2,7 +2,6 @@ import { createContext, useContext, useEffect, useState } from 'react';
 import { NewsAPI } from '../classes';
 import { IHeadlines } from '../types';
 import { useToasts } from './ToastProvider';
-// import { useAlert } from './AlertProvider';
 
 interface INewsProvider {
   newsAPI: NewsAPI | null;

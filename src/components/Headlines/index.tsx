@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { Card } from './Card';
-import { useNews } from '../contexts/NewsProvider';
-import { useFilter } from '../contexts/FilterProvider';
-import { IHeadlines } from '../types';
+import { useNews } from '../../contexts/NewsProvider';
+import { useFilter } from '../../contexts/FilterProvider';
+import { IHeadlines } from '../../types';
 
 const Wrapper = styled.div`
   position: relative;
@@ -18,7 +18,7 @@ const Wrapper = styled.div`
   }
 `;
 
-export const Headlines = (): JSX.Element => {
+const Headlines = (): JSX.Element => {
   const { isError, isLoading, newsAPI } = useNews();
   const { filter } = useFilter();
   const [news, setNews] = useState<IHeadlines[]>([]);
@@ -49,3 +49,5 @@ export const Headlines = (): JSX.Element => {
     </Wrapper>
   );
 };
+
+export default Headlines;

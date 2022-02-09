@@ -8,8 +8,8 @@ import {
   AftonbladetLogo,
   WSJLogo,
   GuardianLogo,
-} from './Logos';
-import { TNewsPaper } from '../types';
+} from '../elements/Logos';
+import { TNewsPaper } from '../../types';
 
 const Container = styled.div`
   display: grid;
@@ -45,10 +45,6 @@ const Container = styled.div`
       }
 
       &:hover {
-        /*box-shadow: 3px 3px 5px 3px hsla(0, 0%, 0%, 0.25);
-        padding-right: 0.15em;
-        padding-left: 0.15em;
-        transform: translate(0.15em, 0.15em); */
         color: var(--color-link);
       }
 

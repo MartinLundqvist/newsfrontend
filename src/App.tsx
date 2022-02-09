@@ -1,6 +1,6 @@
-import { Header } from './components/Header';
-import { Footer } from './components/Footer';
+import { Header } from './components/navigation/Header';
 import { Content } from './components/Content';
+import { Footer } from './components/navigation/Footer';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`

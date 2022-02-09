@@ -1,5 +1,4 @@
-// import { useState } from 'react';
-import { IToast, useToasts } from '../contexts/ToastProvider';
+import { IToast, useToasts } from '../../contexts/ToastProvider';
 import styled from 'styled-components';
 import { useEffect, useState } from 'react';
 
@@ -73,13 +72,13 @@ const Toast = ({ toast, remove }: IToastProps): JSX.Element => {
     };
   }, []);
 
-  useEffect(() => {
-    // console.log('Setting the timer to ' + toast.timeOut);
-    // const timer = setTimeout(() => {
-    //   remove();
-    // }, toast.timeOut);
-    // return () => clearTimeout(timer);
-  }, []);
+  // useEffect(() => {
+  //   // console.log('Setting the timer to ' + toast.timeOut);
+  //   // const timer = setTimeout(() => {
+  //   //   remove();
+  //   // }, toast.timeOut);
+  //   // return () => clearTimeout(timer);
+  // }, []);
 
   return (
     <ToastWrapper error={toast.type === 'error'} className={classname}>

@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { Button } from './Button';
-import { useNews } from '../contexts/NewsProvider';
-import { useFilter } from '../contexts/FilterProvider';
-import { INewsFilter, TNewsPaper, TTimeRange, TVisualize } from '../types';
+import { useFilter } from '../../contexts/FilterProvider';
+import { useNews } from '../../contexts/NewsProvider';
+import { INewsFilter, TNewsPaper, TTimeRange, TVisualize } from '../../types';
+import { Button } from '../elements/Button';
 
 const Wrapper = styled.div`
   position: relative;
@@ -331,6 +331,16 @@ export const Menu = ({ open }: IMenuProps): JSX.Element => {
             onChange={(event) => handleVisualizeChange(event.target.value)}
           />
           Ordmoln (engelska)
+        </label>
+        <label>
+          <input
+            type='radio'
+            name='visualize'
+            value='sentiment'
+            checked={localFilter?.visualize === 'sentiment'}
+            onChange={(event) => handleVisualizeChange(event.target.value)}
+          />
+          Sentiment (engelska)
         </label>
       </div>
       <div>

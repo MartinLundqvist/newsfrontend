@@ -3,7 +3,6 @@ import { INewsFilter } from '../types';
 import { useLocalStorage } from '../utils/useLocalStorage';
 import { validate } from '../utils/validateFilter';
 import { useToasts } from './ToastProvider';
-// import { useAlert } from './AlertProvider';
 
 interface IFilterProvider {
   filter: INewsFilter;
@@ -25,6 +24,8 @@ const initialFilter: INewsFilter = {
   keywords: [],
   timerange: 2,
   visualize: 'newspaper',
+  marketSymbol: '^DJI',
+  hideWeekends: true,
 };
 
 const FilterContext = createContext<IFilterProvider>({} as IFilterProvider);

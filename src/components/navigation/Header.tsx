@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import { useNews } from '../../contexts/NewsProvider';
+import { Button } from '../elements/Button';
 import { Menu } from './Menu';
-import { Button } from './Button';
-import { useNews } from '../contexts/NewsProvider';
 
 const Wrapper = styled.div`
   position: relative;
