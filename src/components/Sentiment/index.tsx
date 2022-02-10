@@ -81,8 +81,8 @@ const Sentiment = (): JSX.Element => {
   const { analyses } = useAnalyses();
   const { filter, setFilter } = useFilter();
   const [config, setConfig] = useState<any>({});
-  const [market, setMarket] = useState<string>();
-  const [hideWeekends, setHideWeekends] = useState<boolean>();
+  const [market, setMarket] = useState<string>('^DJI');
+  const [hideWeekends, setHideWeekends] = useState<boolean>(true);
 
   useEffect(() => {
     setMarket(filter.marketSymbol);
@@ -90,7 +90,7 @@ const Sentiment = (): JSX.Element => {
   }, []);
 
   useEffect(() => {
-    if (analyses && hideWeekends && market) {
+    if (analyses) {
       setConfig(createNewChartConfig(analyses, market, hideWeekends));
     }
   }, [analyses, market, hideWeekends]);
@@ -129,7 +129,7 @@ const Sentiment = (): JSX.Element => {
             <select
               name='hideweekends'
               onChange={(event) => handleHideToggle(event.target.value)}
-              defaultValue={hideWeekends ? 'hide' : 'show'}
+              value={hideWeekends ? 'hide' : 'show'}
             >
               <option value='hide'>Nej</option>
               <option value='show'>Ja</option>
