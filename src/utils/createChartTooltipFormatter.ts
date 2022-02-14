@@ -26,7 +26,7 @@ export const createTooltipFormatter = (
       <div style="position: relative; display: block; left: 3px; width: calc(100% - 6px); height: 1px; background-color: hsla(0, 0%, 0%, 0.25);"></div>
       <div>${headlines?.headlines[i].headline} (${headlines?.headlines[
       i
-    ].share_of_total.toLocaleString()}) </div> `;
+    ].sentiment.toLocaleString()}) </div> `;
   }
 
   const documentFontSize = parseFloat(

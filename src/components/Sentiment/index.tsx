@@ -6,6 +6,7 @@ import { createNewChartConfig } from '../../utils/createChartConfig';
 import { MARKET_DATA } from '../../constants/marketData';
 import { useFilter } from '../../contexts/FilterProvider';
 import { TMarketSymbol } from '../../types';
+import { sentimentTooltip } from '../../constants/sentimentTooltip';
 
 const Page = styled.div`
   position: relative;
@@ -43,6 +44,28 @@ const ChoiceContainer = styled.div`
     text-align: right;
   }
 
+  .tooltip {
+    position: relative;
+    cursor: pointer;
+
+    &:hover .tooltip--text {
+      visibility: visible;
+    }
+
+    .tooltip--text {
+      visibility: hidden;
+      position: absolute;
+      top: calc(100% + 1rem);
+      width: 50ch;
+      text-align: left;
+      padding: 0.5rem 2rem;
+      box-shadow: 0px 5px 5px 0px hsla(0, 0%, 0%, 0.25);
+      background-color: var(--color-card);
+      padding: 1rem;
+      z-index: 1;
+    }
+  }
+
   label {
     display: block;
   }
@@ -51,11 +74,12 @@ const ChoiceContainer = styled.div`
     border: 1px solid black;
     border-radius: 3px;
     padding: 0.25rem 0.25rem;
-    width: auto;
+    min-width: 8ch;
     margin-left: 0.5rem;
     font-family: inherit;
     font-style: inherit;
     font-size: inherit;
+    color: inherit;
 
     &:focus,
     &:hover {
@@ -109,7 +133,13 @@ const Sentiment = (): JSX.Element => {
     <Page>
       <Wrapper>
         <ChoiceContainer>
-          <h3>Marknad och sentiment</h3>
+          <h3>
+            Marknad och sentiment{' '}
+            <span className='tooltip'>
+              &#9432;
+              <div className='tooltip--text'>{sentimentTooltip}</div>
+            </span>
+          </h3>
           <label>
             Marknad:
             <select

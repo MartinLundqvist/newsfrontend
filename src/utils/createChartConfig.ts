@@ -5,6 +5,7 @@ import { createTooltipPosition } from './createChartTooltipPosition';
 import { IAnalysis } from '../types';
 import { createTooltipFormatter } from './createChartTooltipFormatter';
 import { axisPointerLabelFormatter } from './createChartAxisLabelFormatter';
+import { TOOLTIP_FONTSIZE_IN_REM } from '../constants/charting';
 
 export const createNewChartConfig = (
   analysis: IAnalysis[],
@@ -20,6 +21,7 @@ export const createNewChartConfig = (
     width: 30rem;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
     font-family: 'Bebas Neue', cursive;
+    font-size: ${TOOLTIP_FONTSIZE_IN_REM}rem;
     opacity: 0.75;
     border-radius: 0;
     color: var(--color-text);
@@ -35,6 +37,7 @@ export const createNewChartConfig = (
     width: 15rem;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
     font-family: 'Bebas Neue', cursive;
+    font-size: ${TOOLTIP_FONTSIZE_IN_REM}rem;
     opacity: 0.75;
     border-radius: 0;
     color: var(--color-text);
@@ -123,13 +126,6 @@ export const createNewChartConfig = (
           },
           rotate: 45,
         },
-        // axisPointer: {
-        //   handle: {
-        //     show: mobile ? true : false,
-        //     margin: 0,
-        //     size: 30,
-        //   },
-        // },
       },
     ],
     yAxis: [
@@ -141,8 +137,6 @@ export const createNewChartConfig = (
       },
       {
         type: 'value',
-        // max: 1,
-        // min: -1,
         scale: true,
         position: 'left',
         gridIndex: 1,

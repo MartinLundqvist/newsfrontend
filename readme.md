@@ -4,4 +4,3 @@
 
 Sits on Netlify (newsscraper.netlify.app)
 Redeploys automatically upon pushing to master branch on GitHub
-Adding text...
