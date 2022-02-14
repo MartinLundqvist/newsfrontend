@@ -56,6 +56,7 @@ const ChoiceContainer = styled.div`
       visibility: hidden;
       position: absolute;
       top: calc(100% + 1rem);
+      left: -20ch;
       width: 50ch;
       text-align: left;
       padding: 0.5rem 2rem;
@@ -63,6 +64,11 @@ const ChoiceContainer = styled.div`
       background-color: var(--color-card);
       padding: 1rem;
       z-index: 1;
+
+      @media (max-width: 700px) {
+        width: 40ch;
+        left: -20ch;
+      }
     }
   }
 
