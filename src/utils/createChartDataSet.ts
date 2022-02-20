@@ -6,7 +6,7 @@ export const createDataSet = (
   symbol: string,
   hideWeekends: boolean
 ): any[][] => {
-  const results: any[][] = [['date', 'close', 'sentiment']];
+  const results: any[][] = [['date', 'close', 'sentiment', 'headlines']];
 
   // Let's sort the data first, since we are using category axis rather than time axis (to get rid of weekends)
 
@@ -23,7 +23,8 @@ export const createDataSet = (
       const value = marketData.data.find((md) => md.symbol === symbol);
       const price = value?.price ?? null;
       const sentiment = entry.average_sentiment;
-      results.push([timestamp.toString(), price, sentiment]);
+      const headlines = entry.headlines;
+      results.push([timestamp.toString(), price, sentiment, headlines]);
     }
   });
 

@@ -52,7 +52,7 @@ export const createNewChartConfig = (
       },
       position: (point, params, dom, rect, size) =>
         createTooltipPosition(point, params, dom, rect, size),
-      formatter: (params) => createTooltipFormatter(params, analysis),
+      formatter: (params) => createTooltipFormatter(params),
       extraCssText: extraCssText_narrow,
       confine: true,
     },
@@ -147,6 +147,7 @@ export const createNewChartConfig = (
         show: false,
         type: 'continuous',
         seriesIndex: 1,
+        dimension: 2,
         min: -1,
         max: 1,
         color: ['green', 'orange', 'red'],
