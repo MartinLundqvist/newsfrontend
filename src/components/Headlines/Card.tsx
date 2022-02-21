@@ -8,6 +8,12 @@ import {
   AftonbladetLogo,
   WSJLogo,
   GuardianLogo,
+  WashingtonPostLogo,
+  BBCLogo,
+  CNNLogo,
+  DailyMailLogo,
+  NYTimesLogo,
+  YahooLogo,
 } from '../elements/Logos';
 import { TNewsPaper } from '../../types';
 
@@ -106,6 +112,31 @@ const newsPaperLogos: TNewsPaperLogo[] = [
   {
     newspaper: 'Guardian',
     newspaperlogo: <GuardianLogo />,
+  },
+  // The new ones
+  {
+    newspaper: 'WashingtonPost',
+    newspaperlogo: <WashingtonPostLogo />,
+  },
+  {
+    newspaper: 'BBC',
+    newspaperlogo: <BBCLogo />,
+  },
+  {
+    newspaper: 'CNN',
+    newspaperlogo: <CNNLogo />,
+  },
+  {
+    newspaper: 'DailyMail',
+    newspaperlogo: <DailyMailLogo />,
+  },
+  {
+    newspaper: 'NYTimes',
+    newspaperlogo: <NYTimesLogo />,
+  },
+  {
+    newspaper: 'Yahoo',
+    newspaperlogo: <YahooLogo />,
   },
 ];
 
