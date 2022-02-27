@@ -15,7 +15,7 @@ import {
   NYTimesLogo,
   YahooLogo,
 } from '../elements/Logos';
-import { TNewsPaper } from '../../types';
+import { IHeadlines, TNewsPaper } from '../../types';
 
 const Container = styled.div`
   display: grid;
@@ -141,18 +141,29 @@ const newsPaperLogos: TNewsPaperLogo[] = [
 ];
 
 interface ICardProps {
-  children: React.ReactNode;
-  newspaper: TNewsPaper;
+  headlines: IHeadlines;
 }
 
-export const Card = ({ newspaper, children }: ICardProps): JSX.Element => {
+export const Card = ({ headlines }: ICardProps): JSX.Element => {
+  if (headlines.headlines.length === 0) {
+    return <></>;
+  }
+
   return (
     <Container>
       {
-        newsPaperLogos.find((logo) => logo.newspaper === newspaper)
+        newsPaperLogos.find((logo) => logo.newspaper === headlines.newspaper)
           ?.newspaperlogo
       }
-      {children}
+      <ul>
+        {headlines.headlines.map((headline) => (
+          <li key={headline.headline}>
+            <a href={headline.url} target='_blank'>
+              {headline.headline}
+            </a>
+          </li>
+        ))}
+      </ul>
     </Container>
   );
 };

@@ -34,17 +34,7 @@ const Headlines = (): JSX.Element => {
   return (
     <Wrapper>
       {news.map((entry) => (
-        <Card key={entry.newspaper} newspaper={entry.newspaper}>
-          <ul>
-            {entry.headlines.map((headline) => (
-              <li key={headline.headline}>
-                <a href={headline.url} target='_blank'>
-                  {headline.headline}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </Card>
+        <Card key={entry.newspaper} headlines={entry} />
       ))}
     </Wrapper>
   );
