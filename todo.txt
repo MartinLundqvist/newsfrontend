@@ -13,3 +13,5 @@ Ideas:
 - Add links to the headlines in the sentiment view - this requires changing the payload from the backend and analyzer
 - Fix so that "tillämpa filter" also hides the filter menu.
 - Remove Swedish headlines from showing in the sentiment view.
+- Update the market fetcher in the analyzer so that the same markets are collected every time
+- Remove empty cards when using the search keywords
