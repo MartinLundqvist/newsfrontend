@@ -19,9 +19,9 @@ export const createTooltipFormatter = (params: any): string => {
   for (let i = 0; i < NO_HEADLINES_TO_SHOW; i++) {
     headlinesString += `
       <div style="position: relative; display: block; left: 3px; width: calc(100% - 6px); height: 1px; background-color: hsla(0, 0%, 0%, 0.25);"></div>
-      <div>${headlines[i].headline} (${headlines[
-      i
-    ].sentiment.toLocaleString()}) </div> `;
+      <a class="tooltipstyle" href="${headlines[i].url}" target="_blank">${
+      headlines[i].headline
+    } (${headlines[i].sentiment.toLocaleString()}) </a> `;
   }
 
   const documentFontSize = parseFloat(

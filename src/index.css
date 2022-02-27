@@ -22,3 +22,12 @@ body {
   padding: 0;
   background-color: var(--color-bg);
 }
+
+a.tooltipstyle {
+  text-decoration: none;
+  color: inherit;
+}
+
+a.tooltipstyle:hover {
+  color: var(--color-link);
+}

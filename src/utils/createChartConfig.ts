@@ -25,7 +25,6 @@ export const createNewChartConfig = (
     opacity: 0.75;
     border-radius: 0;
     color: var(--color-text);
-
   `;
 
   const extraCssText_narrow = `
@@ -47,6 +46,7 @@ export const createNewChartConfig = (
   const baseConfig: EChartsOption = {
     tooltip: {
       trigger: 'axis',
+      enterable: true,
       axisPointer: {
         type: 'cross',
       },
