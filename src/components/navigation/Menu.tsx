@@ -162,9 +162,10 @@ const KeywordWrapper = styled.div`
 
 interface IMenuProps {
   open: boolean;
+  setOpen: (open: boolean) => void;
 }
 
-export const Menu = ({ open }: IMenuProps): JSX.Element => {
+export const Menu = ({ open, setOpen }: IMenuProps): JSX.Element => {
   const { isError, isLoading, newsAPI } = useNews();
   const { filter, setFilter } = useFilter();
   const [localFilter, setLocalFilter] = useState<INewsFilter>();
@@ -227,6 +228,16 @@ export const Menu = ({ open }: IMenuProps): JSX.Element => {
         ...localFilter,
         visualize: value as TVisualize,
       });
+  };
+
+  const handleApplyChangesAndClose = () => {
+    localFilter && setFilter(localFilter);
+    setOpen(false);
+  };
+
+  const handleRegretChangesAndClose = () => {
+    setLocalFilter(filter);
+    setOpen(false);
   };
 
   if (isError || isLoading || !localFilter) {
@@ -345,8 +356,8 @@ export const Menu = ({ open }: IMenuProps): JSX.Element => {
       </div>
       <div>
         <h3>Tillämpa?</h3>
-        <Button onClick={() => setFilter(localFilter)}>Tillämpa</Button>
-        <Button alert onClick={() => setLocalFilter(filter)}>
+        <Button onClick={() => handleApplyChangesAndClose()}>Tillämpa</Button>
+        <Button alert onClick={() => handleRegretChangesAndClose()}>
           Ångra
         </Button>
       </div>

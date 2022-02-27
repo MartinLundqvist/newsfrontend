@@ -77,7 +77,7 @@ export const Header = (): JSX.Element => {
         </h3>
         <MenuButton open={open} setOpen={setOpen} />
       </Wrapper>
-      <Menu open={open} />
+      <Menu open={open} setOpen={setOpen} />
     </>
   );
 };
