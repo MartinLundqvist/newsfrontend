@@ -8,9 +8,9 @@ Ideas:
   - Issues detected with headlines from Sydsvenskan
 - Remove empty cards when using the search keywords. DONE
 - Fix so that "tillämpa filter" also hides the filter menu. DONE.
+- Remove Swedish headlines from showing in the sentiment view. DONE
 
 - Add a "show max headlines" option
 - Refactor the whole thing to use luxon DateTime throughout
 - Add links to the headlines in the sentiment view - this requires changing the payload from the backend and analyzer
-- Remove Swedish headlines from showing in the sentiment view.
 - Update the market fetcher in the analyzer so that the same markets are collected every time

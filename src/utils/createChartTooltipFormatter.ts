@@ -2,11 +2,16 @@ import {
   NO_HEADLINES_TO_SHOW,
   TOOLTIP_HEADING_FONTSIZE_IN_REM,
 } from '../constants/charting';
-import { IAnalysis, IHeadlineEntry } from '../types';
+import { IHeadlineEntry } from '../types';
 
 export const createTooltipFormatter = (params: any): string => {
   const callbackParams: any = Object.values(params)[0]; // Access the first grid's params, as an Array.
-  const headlines = callbackParams.data[3] as IHeadlineEntry[];
+  var headlines = callbackParams.data[3] as IHeadlineEntry[];
+
+  // Only keep the english ones
+  headlines = headlines.filter((headline) => {
+    return headline.language === 'en';
+  });
 
   // Then we format the headlines string.
   var headlinesString = '';
