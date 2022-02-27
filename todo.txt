@@ -2,11 +2,14 @@ Ideas:
 - Show as cloud (with links) DONE. But not with links...
 - Change options to "english", "swedish", "swiss", etc. NOPE. 
 - Fix localStorage issue when the filter has changed as part of an upgrade. DONE.
-- Add a "show max headlines" option
 - Refactor the Cloud / Content components so they re-use the existing news if they have been loaded. DONE.
 - Add a status sticky at the bottom of the screen DONE.
   - Fetched XXX headlines
   - Issues detected with headlines from Sydsvenskan
   - 
 
+- Add a "show max headlines" option
 - Refactor the whole thing to use luxon DateTime throughout
+- Add links to the headlines in the sentiment view - this requires changing the payload from the backend and analyzer
+- Fix so that "tillämpa filter" also hides the filter menu.
+- Remove Swedish headlines from showing in the sentiment view.

@@ -28,5 +28,7 @@ export const createDataSet = (
     }
   });
 
+  // console.table(results); // DEBUG
+
   return results;
 };

@@ -177,5 +177,7 @@ export const createNewChartConfig = (
     ],
   };
 
+  // console.log(baseConfig); // DEBUG
+
   return baseConfig;
 };

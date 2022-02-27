@@ -117,6 +117,7 @@ const Sentiment = (): JSX.Element => {
       setConfig(
         createNewChartConfig(analyses, filter.marketSymbol, filter.hideWeekends)
       );
+      // console.table(analyses); // DEBUG
     }
   }, [analyses, filter.marketSymbol, filter.hideWeekends]);
 
