@@ -24,7 +24,7 @@ export interface IHeadlines {
   }[];
 }
 
-export type TTimeRange = 2 | 120 | 720;
+export type TTimeRange = 2 | 120 | 360;
 
 export type TVisualize = 'newspaper' | 'cloud' | 'sentiment';
 

@@ -6,7 +6,7 @@ const schema: JSONSchemaType<INewsFilter> = {
   properties: {
     newspapers: { type: 'array', uniqueItems: true, items: { type: 'string' } },
     keywords: { type: 'array', uniqueItems: true, items: { type: 'string' } },
-    timerange: { type: 'integer', enum: [2, 120, 720] },
+    timerange: { type: 'integer', enum: [2, 120, 360] },
     visualize: { type: 'string', enum: ['newspaper', 'cloud', 'sentiment'] },
     marketSymbol: { type: 'string' },
     hideWeekends: { type: 'boolean' },

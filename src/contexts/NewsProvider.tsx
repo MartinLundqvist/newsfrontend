@@ -31,7 +31,7 @@ const NewsProvider = ({ children }: INewsProviderProps): JSX.Element => {
         setIsLoading(true);
         const toDate = new Date();
         var fromDate = new Date(toDate);
-        fromDate.setMinutes(fromDate.getMinutes() - 720);
+        fromDate.setMinutes(fromDate.getMinutes() - 360);
 
         const apiURL = import.meta.env.VITE_API_URL;
 

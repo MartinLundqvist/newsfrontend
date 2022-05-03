@@ -291,12 +291,12 @@ export const Menu = ({ open, setOpen }: IMenuProps): JSX.Element => {
           <input
             type='radio'
             name='timerange'
-            id='720'
-            value='720'
-            checked={localFilter?.timerange === 720}
+            id='360'
+            value='360'
+            checked={localFilter?.timerange === 360}
             onChange={(event) => handleTimeRangeChange(event.target.value)}
           />
-          12 tim
+          6 tim
         </label>
       </div>
       <div>
