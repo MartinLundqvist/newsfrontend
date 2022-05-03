@@ -37,7 +37,7 @@ interface IWords {
 const fontScaling = {
   2: 30,
   120: 25,
-  720: 15,
+  360: 15,
 };
 
 const Cloud = (): JSX.Element => {
