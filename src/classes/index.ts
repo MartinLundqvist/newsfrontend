@@ -27,9 +27,20 @@ class NewsAPI {
         return thisNewsitem.newspaper === paper;
       });
 
+      // console.log(temp);
       //And add that array to the final results
-      results.push(temp[temp.length - 1]);
+      // results.push(temp[temp.length - 1]);
+      // console.log(
+      //   '---- forEach(paper) is now at paper === ' +
+      //     paper +
+      //     ' and the temp array is:'
+      // );
+      // console.log(temp);
+      results.push(temp[0]);
     });
+
+    // console.log('REsults from the latestNews are....');
+    // console.log(results);
 
     return results;
   };
@@ -37,8 +48,11 @@ class NewsAPI {
   public filteredNews = (filter: INewsFilter): IHeadlines[] => {
     // If "latest news" is chosen, we use the latestNews function to gather the latest entries. So it's not really "2 minutes".
     if (filter.timerange === 2) {
+      // console.log('2 minutes');
       return filterNews(this.latestNews(), filter);
     }
+
+    // console.log('Not 2 minutes');
 
     // If not, we timestrip the news
     const results = timeStripNews(this.news, filter);
@@ -47,7 +61,8 @@ class NewsAPI {
   };
 
   public latestUpdate = (): Date => {
-    const latestDate = this.news[this.news.length - 1].date;
+    // const latestDate = this.news[this.news.length - 1].date;
+    const latestDate = this.news[0].date;
     return new Date(latestDate);
   };
 
