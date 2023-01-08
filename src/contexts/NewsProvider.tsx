@@ -41,6 +41,10 @@ const NewsProvider = ({ children }: INewsProviderProps): JSX.Element => {
         if (results.ok) {
           const rawData: IHeadlines[] = await results.json();
 
+          if (rawData.length === 0) {
+            throw new Error('Databasen leverade noll resultat.');
+          }
+
           const newNewsAPI = new NewsAPI(rawData);
 
           setNewsAPI(newNewsAPI);
@@ -55,11 +59,12 @@ const NewsProvider = ({ children }: INewsProviderProps): JSX.Element => {
               JSON.stringify(results.statusText),
             'error'
           );
-          // console.log('Error occured ' + JSON.stringify(results));
+          console.log('Error occured ' + JSON.stringify(results));
         }
       } catch (error) {
         createToast(
-          'Fel uppstod när data skulle hämtas ' + JSON.stringify(error),
+          'Fel uppstod när data skulle hämtas ' +
+            JSON.stringify((error as Error).message),
           'error'
         );
 
